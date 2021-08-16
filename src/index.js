@@ -10,38 +10,22 @@ module.exports = function toReadable(number) {
     return 'zero'
   }
 
-  huoneNumber(number)
+  if ((number >= 100) && (number <= 999)) {
+    answer = answer + oneArray[number.toString()[0]] + ' hundred '
+  }
+
   number = number % 100
-  oneNumber(number)
-  teenNumber(number)
-  tenNumber(number)
 
-  function huoneNumber(number) {
-    if ((number >= 100) && (number <= 999)) {
-      answer = answer + oneArray[number.toString()[0]] + ' hundred '
-    }
-    return
+  if (number <= 9) {
+    answer = answer + oneArray[number]
   }
 
-  function oneNumber(number) {
-    if (number <= 9) {
-      answer = answer + oneArray[number]
-    }
-    return
+  if ((number >= 10) && (number <= 19)) {
+    answer = answer + teenArray[number.toString()[1]]
   }
 
-  function teenNumber(number) {
-    if ((number >= 10) && (number <= 19)) {
-      answer = answer + teenArray[number.toString()[1]]
-    }
-    return
-  }
-
-  function tenNumber(number) {
-    if ((number >= 20) && (number <= 99)) {
-      answer = answer + tenArray[number.toString()[0]] + ' ' + oneArray[number.toString()[1]]
-    }
-    return
+  if ((number >= 20) && (number <= 99)) {
+    answer = answer + tenArray[number.toString()[0]] + ' ' + oneArray[number.toString()[1]]
   }
 
   return answer.trim()
